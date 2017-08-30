@@ -22,14 +22,31 @@ var articleComment = {
     return {
       comments: [],
       name: '',
-      content: ''
+      content: '',
+      pusher: null,
+      channel: null,
     }
+  },
+  created() {
+    this.pusher = new Pusher('d90f998750290f316a0b', {
+      encrypted: true
+    });
+
+    this.channel = window.location.pathname.replace(new RegExp('/', 'g'), '-');
+    var channel = this.pusher.subscribe(this.channel);
+    channel.bind('new-comment', (comment) => {
+      this.comments.push(
+        {name: comment.name, content: comment.content}
+      )
+    });
   },
   methods: {
     onSubmit() {
-      this.comments.push(
-        {name: this.name, content: this.content}
-      )
+      const payload = {name: this.name, content: this.content, channel: this.channel};
+      axios.post('http://localhost:2000/comment', payload)
+        .then(response => {
+          console.log(response);
+        })
     }
   }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "serve build",
     "build": "node build.js",
-    "watch": "nodemon --ignore build/ build.js"
+    "watch": "nodemon --ignore build/ build.js",
+    "server": "node server.js"
   },
   "dependencies": {
     "jade": "^1.11.0",
