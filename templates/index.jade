@@ -2,12 +2,20 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    meta(name='viewport', content='width=device-width')
-    title= 'Home'
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title= 'Raccoon Blog'
+    link(rel="stylesheet", href="css/styles.css" type="text/css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
   body
-    each article in collections.articles
-      article.content-article
-        header
-          span.timestamp= article.date
-          h2
-            a(href='/' + article.path)= article.title
+    .container-fluid
+      h1.text-primary.text-center Raccoon Blog
+      p.text-center A blog by Christian Nwamba
+      .main
+        each article in collections.articles
+          article.content-article
+            header
+              p
+                span.timestamp= article.date
+              h3
+                a(href='/' + article.path)= article.title
+            hr

@@ -3,6 +3,7 @@ var markdown    = require('metalsmith-markdown');
 var templates  = require('metalsmith-templates');
 var permalinks = require('metalsmith-permalinks');
 var collections = require('metalsmith-collections');
+var assets = require('metalsmith-assets');
 
 metalsmith(__dirname)
   .source('src')
@@ -16,6 +17,10 @@ metalsmith(__dirname)
   .use(markdown({
     gfm: true,
     tables: true,
+  }))
+  .use(assets({
+    source: 'src/assets/',
+    destination: './'
   }))
   .use(permalinks())
   .use(templates({
