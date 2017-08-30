@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "serve build",
-    "build": "nodemon build.js"
+    "build": "node build.js",
+    "watch": "nodemon --ignore build/ build.js"
   },
   "dependencies": {
     "jade": "^1.11.0",
