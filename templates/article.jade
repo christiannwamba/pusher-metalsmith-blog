@@ -4,10 +4,10 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='viewport', content='width=device-width')
     title= title
-    link(rel="stylesheet", href="css/styles.css" type="text/css")
+    link(rel="stylesheet", href="/css/styles.css" type="text/css")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
   body
-    .container-fluid
+    .container-fluid#app
       a(href="/index.html" style="text-decoration:none")
         h1.text-primary.text-center Raccoon Blog
       .main(style="margin:50px 20%")
@@ -16,3 +16,8 @@ html(lang='en')
         div.timestamp= date
         br
         article!= contents
+        article-comment
+    script(src="https://unpkg.com/vue")
+    script(src="https://js.pusher.com/4.1/pusher.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js")
+    script(src="/js/app.js")
