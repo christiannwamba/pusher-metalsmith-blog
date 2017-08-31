@@ -24,7 +24,7 @@ var articleComment = {
       name: '',
       content: '',
       pusher: null,
-      channel: null,
+      channelName: null,
     }
   },
   created() {
@@ -32,8 +32,8 @@ var articleComment = {
       encrypted: true
     });
 
-    this.channel = window.location.pathname.replace(new RegExp('/', 'g'), '-');
-    var channel = this.pusher.subscribe(this.channel);
+    this.channelName = window.location.pathname.replace(new RegExp('/', 'g'), '-');
+    var channel = this.pusher.subscribe(this.channelName);
     channel.bind('new-comment', (comment) => {
       this.comments.push(
         {name: comment.name, content: comment.content}
@@ -42,7 +42,7 @@ var articleComment = {
   },
   methods: {
     onSubmit() {
-      const payload = {name: this.name, content: this.content, channel: this.channel};
+      const payload = {name: this.name, content: this.content, channel: this.channelName};
       axios.post('http://localhost:2000/comment', payload)
         .then(response => {
           console.log(response);
