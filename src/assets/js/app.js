@@ -28,7 +28,7 @@ var articleComment = {
     }
   },
   created() {
-    this.pusher = new Pusher('d90f998750290f316a0b', {
+    this.pusher = new Pusher('PUSHER-KEY', {
       encrypted: true
     });
 
